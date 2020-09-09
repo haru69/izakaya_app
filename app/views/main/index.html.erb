@@ -1,0 +1,42 @@
+<h1>居酒屋ファインダー</h1>
+<body>
+<%=form_tag("/update") do %>
+
+<li>現在地を取得</li>
+
+<li>評価</li><select name="favorite" required>
+<option name="favorite0">おまかせ</option>
+<option name="favorite1">3.0~3.5</option>
+<option name="favorite2">3.5~4.0</option>
+<option name="favorite3">4.0以上</option>
+</select>
+<br><br>
+<li>金額の目安</li>
+<select name="maney" required>
+<option name="maney0">おまかせ</option>
+<option name="maney1">~1000円</option>
+<option name="maney2">1000~2000円</option>
+<option name="maney3">2000~3000円</option>
+<option name="maney4">3000~4000円</option>
+<option name="maney5">4000~5000円</option>
+<option name="maney6">5000円以上</option>
+</select>
+<br><br>
+<li>お店までの距離</li>
+<select name="time" required>
+<option name="time0">おまかせ</option>
+<option name="time1">100m</option>
+<option name="time2">200m</option>
+<option name="time3">300m</option>
+<option name="time4">400m</option>
+<option name="time5">500m</option>
+<option name="time6">500m以上</option>
+</select>
+<br><br>
+<input type="checkbox" >喫煙
+<br><br><br>
+<a href="show" class="btn-square">検索</a>
+<% end %>
+</body>
+<br><br><br>
+Powered by <a style="text-align:right" href="http://webservice.recruit.co.jp/">ホットペッパー Webサービス</a>
