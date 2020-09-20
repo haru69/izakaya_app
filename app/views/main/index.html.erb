@@ -4,24 +4,24 @@
 <%=form_tag("/update", method: :post) do %>
 
 <li>現在地を取得</li>
-<select name="<%@address%>" required>
+<select input name="address" required>
 </select>
     
   
 <li>お店までの距離</li>
-<select name="<%@range%>" required>
-<option name="time0">おまかせ</option>
-<option name="time1">100m</option>
-<option name="time2">200m</option>
-<option name="time3">300m</option>
-<option name="time4">400m</option>
-<option name="time5">500m</option>
-<option name="time6">500m以上</option>
+<select name="range" required>
+<option name="range0">おまかせ</option>
+<option name="range1">100m</option>
+<option name="range2">200m</option>
+<option name="range3">300m</option>
+<option name="range4">400m</option>
+<option name="range5">500m</option>
+<option name="range6">500m以上</option>
 </select>
 <br><br>
 
 <li>金額の目安</li>
-<select name="<%@budget%>" required>
+<select name="maney" required>
 <option name="maney0">おまかせ</option>
 <option name="maney1">~1000円</option>
 <option name="maney2">1000~2000円</option>
@@ -32,14 +32,14 @@
 </select>
 <br><br>
 
-<input type="checkbox" name="<%@smoking%>">喫煙
+<input type="checkbox" name="smoking">喫煙
 <br><br><br>
 <a href="/" class="btn-square">検索</a>
 <% end %>
 
 
      
-<%=@result%>
+<%=@response%>
 
 </body>
 <br><br><br>
