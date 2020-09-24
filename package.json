@@ -13,6 +13,7 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "@babel/preset-react": "^7.10.4",
     "webpack-dev-server": "^3.11.0"
   },
   "babel": {
