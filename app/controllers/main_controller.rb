@@ -9,6 +9,13 @@ class MainController < ApplicationController
   end
 
 def update
+
+  uri = URI.parse('https://maps.googleapis.com/maps/api/js?key=AIzaSyCnwFUnTZdkOp_gqWW9ohMtNeITpSQ3aRE&callback=initMap')
+  geocoder.geocode( { 'address': inputAddress}, function(results, status) {
+  
+　　　　　　　　　　　　
+      map.setCenter(results[0].geometry.location)});
+
   @lat = params[:lat]
   @lng = params[:lng]
   @range = params[:range]

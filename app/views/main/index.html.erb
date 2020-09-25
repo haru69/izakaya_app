@@ -5,7 +5,7 @@
 
 <li>現在地を取得</li>
 <select name="address" required>
-#google map apiから緯度・経度取得し、@lat/@lngに入れる
+
 
 <!-- 地名入力用のinputを追加 -->
 <input id="address" type="textbox" value="川崎駅">
@@ -27,6 +27,7 @@ mapを関数の外で定義(codeAddressでも使うため)
 geocoderを用意
 */
 
+
 let map
 let geocoder
 
@@ -40,7 +41,7 @@ function initMap(){
   });
 }
 
-function codeAddress(){
+function codeAddress(){ 
   // 入力を取得
   let inputAddress = document.getElementById('address').value;
 
@@ -49,6 +50,10 @@ function codeAddress(){
     if (status == 'OK') {
 　　　　　　　　　　　　// map.setCenterで地図が移動
       map.setCenter(results[0].geometry.location);
+
+
+  let lat = results[0].geometry.location.lat();
+  let lng = results[0].geometry.location.lng();
 
 　　　　　　　　　　　　// google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
       var marker = new google.maps.Marker({
@@ -64,33 +69,33 @@ function codeAddress(){
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnwFUnTZdkOp_gqWW9ohMtNeITpSQ3aRE&callback=initMap" async defer></script>
 
 </select>
-    
+    <%=@lat%><%=@lng%>
   
 <li>お店までの距離</li>
 <select name="range" required>
-<option name="range0">おまかせ</option>
-<option name="range1">100m</option>
-<option name="range2">200m</option>
-<option name="range3">300m</option>
-<option name="range4">400m</option>
-<option name="range5">500m</option>
-<option name="range6">500m以上</option>
+<option name="range" value= "0">おまかせ</option>
+<option name="range" value= "1">100m</option>
+<option name="range" value= "3">200m</option>
+<option name="range" value= "4">300m</option>
+<option name="range" value= "5">400m</option>
+<option name="range" value= "6">500m</option>
+<option name="range" value= "7">500m以上</option>
 </select>
 <br><br>
 
 <li>金額の目安</li>
 <select name="maney" required>
-<option name="maney0">おまかせ</option>
-<option name="maney1">~1000円</option>
-<option name="maney2">1000~2000円</option>
-<option name="maney3">2000~3000円</option>
-<option name="maney4">3000~4000円</option>
-<option name="maney5">4000~5000円</option>
-<option name="maney6">5000円以上</option>
+<option name="maney" value= "0">おまかせ</option>
+<option name="maney" value= "1">~1000円</option>
+<option name="maney" value= "2">1000~2000円</option>
+<option name="maney" value= "3">2000~3000円</option>
+<option name="maney" value= "4">3000~4000円</option>
+<option name="maney" value= "5">4000~5000円</option>
+<option name="maney" value= "6">5000円以上</option>
 </select>
 <br><br>
 
-<input type="checkbox" name="smoking">喫煙
+<input type="checkbox" name="smoking" value= "0">喫煙
 <br><br><br>
 <a href="/" class="btn-square">検索</a>
 <% end %>
