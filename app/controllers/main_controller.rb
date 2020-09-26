@@ -5,19 +5,16 @@ class MainController < ApplicationController
 
   def index
 
-  
+    @lat = session[:lat]
+    @lng = session[:lng]
   end
 
 def update
 
-  uri = URI.parse('https://maps.googleapis.com/maps/api/js?key=AIzaSyCnwFUnTZdkOp_gqWW9ohMtNeITpSQ3aRE&callback=initMap')
-  geocoder.geocode( { 'address': inputAddress}, function(results, status) {
-  
-　　　　　　　　　　　　
-      map.setCenter(results[0].geometry.location)});
+ 
 
-  @lat = params[:lat]
-  @lng = params[:lng]
+  @lat = results[0].geometry.location.lat
+  @lng = "1"
   @range = params[:range]
   @maney = params[:maney]
   @smoking = params[:smoking]
@@ -41,6 +38,8 @@ def update
 end
 
   def show
+    @lat = 1
+    @lng = 1
   end
 
  

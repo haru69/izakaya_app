@@ -52,8 +52,8 @@ function codeAddress(){
       map.setCenter(results[0].geometry.location);
 
 
-  let lat = results[0].geometry.location.lat();
-  let lng = results[0].geometry.location.lng();
+let session[:lat] = results[0].geometry.location.lat();
+let session[:lng] = results[0].geometry.location.lng();
 
 　　　　　　　　　　　　// google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
       var marker = new google.maps.Marker({
@@ -102,7 +102,7 @@ function codeAddress(){
 
 
      
-<%=@response%>
+
 
 </body>
 <br><br><br>
