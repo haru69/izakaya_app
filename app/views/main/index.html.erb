@@ -52,8 +52,8 @@ function codeAddress(){
       map.setCenter(results[0].geometry.location);
 
 
-let session[:lat] = results[0].geometry.location.lat();
-let session[:lng] = results[0].geometry.location.lng();
+let lat = results[0].geometry.location.lat();
+let lng = results[0].geometry.location.lng();
 
 　　　　　　　　　　　　// google.maps.MarkerでGoogleMap上の指定位置にマーカが立つ
       var marker = new google.maps.Marker({
@@ -95,13 +95,15 @@ let session[:lng] = results[0].geometry.location.lng();
 </select>
 <br><br>
 
+
+
 <input type="checkbox" name="smoking" value= "0">喫煙
 <br><br><br>
 <a href="/" class="btn-square">検索</a>
 <% end %>
 
 
-     
+     <%=@results%>
 
 
 </body>
