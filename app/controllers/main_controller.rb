@@ -1,67 +1,69 @@
 class MainController < ApplicationController
+
+  before_action :locall_date,only:[:update] 
+
   require 'net/http'
   require 'uri'
   require 'json'
 
   def index
 
-   # @lat = params[:lat]
-    #@lng = params[:lng]
-    #@range = params[:range]
-    #@maney = params[:maney]
-    #@smoking = params[:smoking]
+    session[:lat] = params[:lat].to_i
+    session[:lng] = params[:lng].to_i
+
     
-    data = {
-      "key": "a53d2b44f8d80d6d",
-      "lat": 35.531328,
-      "lng": 139.696899,
-      "range": 1,
-      #"budget": 1,
-      "non_smoking": 0,
-      "format": "json"
-    }
-  
-    query = data.to_query
-      uri = URI.parse('http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?' + query )
-      res = Net::HTTP.get_response(uri)
-      res_data = JSON.parse(res.body)
-     @results = res_data
+
   end
 
 def update
 
-  require 'net/http'
-  require 'uri'
-  require 'json'
+  session[:key] = "a53d2b44f8d80d6d"
+    session[:lat] = params[:lat]
+    session[:lng] = params[:lng]
+    session[:range] = params[:range]
+    session[:smoking] = params[:smoking]
+    session[:keyword] = "居酒屋"
+    session[:format] = "json"
 
-  @lat = results[0].geometry.location.lat()
-  @lng = results[0].geometry.location.lng()
-  @range = params[:range]
-  @maney = params[:maney]
-  @smoking = params[:smoking]
-  
   data = {
-    "key": ENV['API_KEY'],
-    "lat": 35.531328,
-    "lng": 139.696899,
-    "range": 1,
-    "budget": 1,
-    "non_smoking": 1,
-    "format": "json"
+    "key": session[:key],
+    "lat": session[:lat],
+    "lng": session[:lng],
+    "range": session[:range],
+    "keyword": session[:keyword],
+    "non_smoking": session[:smoking],
+    "format": session[:format]
   }
 
   query = data.to_query
-    uri = URI.parse('http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=a53d2b44f8d80d6d&lat=35.531328&lng=139.696899&range=2&non_smoking=1&format=json')
+  uri = URI.parse('http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?' + query )
     res = Net::HTTP.get_response(uri)
    res_data = JSON.parse(res.body)
    @results = res_data
 
+
 end
 
   def show
-    @lat = 1
-    @lng = 1
+
+    data = {
+      "key": session[:key],
+      "lat": session[:lat],
+      "lng": session[:lng],
+      "range": session[:range],
+      "keyword": session[:keyword],
+      "non_smoking": session[:smoking],
+      "format": session[:format]
+    }
+
+    query = data.to_query
+  uri = URI.parse('http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?' + query )
+    res = Net::HTTP.get_response(uri)
+   res_data = JSON.parse(res.body)
+   @results = res_data
   end
+
+
 
  # 200 Success
 def response_success(class_name, action_name)
