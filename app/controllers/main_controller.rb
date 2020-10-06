@@ -1,47 +1,26 @@
 class MainController < ApplicationController
 
-  before_action :locall_date,only:[:update] 
-
   require 'net/http'
   require 'uri'
   require 'json'
 
   def index
+   
+@update = Update.new
 
-    session[:lat] = params[:lat].to_i
-    session[:lng] = params[:lng].to_i
-
-    
 
   end
 
 def update
 
   session[:key] = "a53d2b44f8d80d6d"
-    session[:lat] = params[:lat]
-    session[:lng] = params[:lng]
-    session[:range] = params[:range]
-    session[:smoking] = params[:smoking]
-    session[:keyword] = "居酒屋"
-    session[:format] = "json"
-
-  data = {
-    "key": session[:key],
-    "lat": session[:lat],
-    "lng": session[:lng],
-    "range": session[:range],
-    "keyword": session[:keyword],
-    "non_smoking": session[:smoking],
-    "format": session[:format]
-  }
-
-  query = data.to_query
-  uri = URI.parse('http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?' + query )
-    res = Net::HTTP.get_response(uri)
-   res_data = JSON.parse(res.body)
-   @results = res_data
-
-
+  session[:lat] = params[:lat].to_f
+  session[:lng] = params[:lng].to_f
+  session[:range] = params[:range].to_i
+  session[:smoking] = params[:smoking].to_i
+  session[:keyword] = "居酒屋"
+  session[:format] = "json"
+ 
 end
 
   def show
@@ -62,6 +41,8 @@ end
    res_data = JSON.parse(res.body)
    @results = res_data
   end
+
+
 
 
 
