@@ -13,13 +13,13 @@ class MainController < ApplicationController
 
 def update
 
-  session[:key] = "a53d2b44f8d80d6d"
-  session[:lat] = params[:lat].to_f
-  session[:lng] = params[:lng].to_f
-  session[:range] = params[:range].to_i
-  session[:smoking] = params[:smoking].to_i
-  session[:keyword] = "居酒屋"
-  session[:format] = "json"
+ # session[:key] = "a53d2b44f8d80d6d"
+  #session[:lat] = params[:lat].to_f
+ # session[:lng] = params[:lng].to_f
+  #session[:range] = params[:range].to_i
+  #session[:smoking] = params[:smoking].to_i
+  #session[:keyword] = "居酒屋"
+ # session[:format] = "json"
  
 end
 
@@ -35,11 +35,11 @@ end
       "format": session[:format]
     }
 
-    query = data.to_query
-  uri = URI.parse('http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?' + query )
-    res = Net::HTTP.get_response(uri)
-   res_data = JSON.parse(res.body)
-   @results = res_data
+  #  query = data.to_query
+  #uri = URI.parse('http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?' + query )
+  #  res = Net::HTTP.get_response(uri)
+   #res_data = JSON.parse(res.body)
+   #@results = res_data
   end
 
 
