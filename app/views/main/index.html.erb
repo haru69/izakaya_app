@@ -1,7 +1,7 @@
 <h1>居酒屋ファインダー</h1>
 
 <body>
-<%= form_for @update,url: "/update", method: "post" do %>
+
 
 <li>現在地を取得</li>
 
@@ -78,7 +78,7 @@ function codeAddress(){
 <div id = "display2" name = "lng" value = "lng">経度</div>
 
 
-
+<%= form_with url: show_path do %>
 
  
  <%=session[:range]%><%=session[:lng]%>
