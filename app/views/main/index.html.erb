@@ -74,12 +74,14 @@ function codeAddress(){
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCnwFUnTZdkOp_gqWW9ohMtNeITpSQ3aRE&callback=initMap" async defer></script>
 
-<div id = "display1" name = "lat" value = "lat">緯度</div>
-<div id = "display2" name = "lng" value = "lng">経度</div>
+
 
 
 <%= form_with url: update_path do |f| %>
 
+<li>最寄りの駅</li>
+<%=f.select :address,[["川崎駅","川崎駅"],["鶴見駅","鶴見駅"],["綱島駅","綱島駅"],["矢向駅","矢向駅"]]%>
+<br><br>
 <li>お店までの距離</li>
 <%=f.select :range,[["300m","1"],["500m","2"],["1000m","3"],["2000m","4"],["3000m","5"]]%>
 <br><br>
@@ -88,6 +90,7 @@ function codeAddress(){
 <br><br>
 <li>喫煙</li>
 <%=f.select :smoking,[["禁煙","0"],["喫煙","1"]]%>
+<br><br>
 
 <%=f.submit "送信"%>
 <%end%>

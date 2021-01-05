@@ -12,36 +12,39 @@ class MainController < ApplicationController
   end
 
 def update
+  session[:address] = params[:address]
   session[:range] = params[:range]
   session[:bubget] = params[:bubget]
   session[:smoking] = params[:smoking]
- # session[:key] = "a53d2b44f8d80d6d"
+  session[:key] = "a53d2b44f8d80d6d"
   #session[:lat] = params[:lat].to_f
  # session[:lng] = params[:lng].to_f
   #session[:range] = params[:range].to_i
   #session[:smoking] = params[:smoking].to_i
-  #session[:keyword] = "居酒屋"
- # session[:format] = "json"
- redirect_to "/show"
+  session[:keyword] = "居酒屋"
+  session[:format] = "json"
+ 
+  redirect_to "/show"
 end
 
   def show
   
     data = {
       "key": session[:key],
-      "lat": session[:lat],
-      "lng": session[:lng],
+      "address": session[:address],
+      #"lat": session[:lat],
+      #"lng": session[:lng],
       "range": session[:range],
       "keyword": session[:keyword],
       "non_smoking": session[:smoking],
       "format": session[:format]
     }
 
-  #  query = data.to_query
-  #uri = URI.parse('http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?' + query )
-  #  res = Net::HTTP.get_response(uri)
-   #res_data = JSON.parse(res.body)
-   #@results = res_data
+    query = data.to_query
+  uri = URI.parse('http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?' + query )
+    res = Net::HTTP.get_response(uri)
+   res_data = JSON.parse(res.body)
+   @results = res_data
   end
 
 
