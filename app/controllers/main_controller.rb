@@ -6,13 +6,15 @@ class MainController < ApplicationController
 
   def index
    
-@update = Update.new
+#@update = Update.new
 
 
   end
 
 def update
-
+  session[:range] = params[:range]
+  session[:bubget] = params[:bubget]
+  session[:smoking] = params[:smoking]
  # session[:key] = "a53d2b44f8d80d6d"
   #session[:lat] = params[:lat].to_f
  # session[:lng] = params[:lng].to_f
@@ -20,11 +22,11 @@ def update
   #session[:smoking] = params[:smoking].to_i
   #session[:keyword] = "居酒屋"
  # session[:format] = "json"
- 
+ redirect_to "/show"
 end
 
   def show
-
+  
     data = {
       "key": session[:key],
       "lat": session[:lat],

@@ -78,45 +78,30 @@ function codeAddress(){
 <div id = "display2" name = "lng" value = "lng">経度</div>
 
 
-<%= form_with url: show_path do %>
+<%= form_with url: update_path do |f| %>
 
- 
- <%=session[:range]%><%=session[:lng]%>
-  
 <li>お店までの距離</li>
-<select name="range" required>
-<option selected="selected" value= "3">おまかせ</option>
-<option value= "1">300m</option>
-<option value= "2">500m</option>
-<option value= "3">1000m</option>
-<option value= "4">2000m</option>
-<option value= "5">3000m</option>
-</select>
+<%=f.select :range,[["300m","1"],["500m","2"],["1000m","3"],["2000m","4"],["3000m","5"]]%>
 <br><br>
-
 <li>金額の目安</li>
-<select name="maney" required>
-<option selected="selected" value= "2000">おまかせ</option>
-<option value= "1000">~1000円</option>
-<option value= "2000">1000~2000円</option>
-<option value= "3000">2000~3000円</option>
-<option value= "4000">3000~4000円</option>
-<option value= "5000">4000~5000円</option>
-<option value= "6000">5000円以上</option>
-</select>
+<%=f.select :bubget,[["1000~2000円","2000"],["2000~3000円","3000"],["3000~4000円","4000"],["4000~5000円","5000"],["5000円以上","10000"]]%>
+<br><br>
+<li>喫煙</li>
+<%=f.select :smoking,[["禁煙","0"],["喫煙","1"]]%>
+
+<%=f.submit "送信"%>
+<%end%>
+ 
+ <%=session[:lng]%>
+
 <br><br>
 
 
 
-<li>喫煙</li>
-<select name="smoking" required>
-<option selected="selected" value= "0">禁煙</option>
-<option value= "1">喫煙</option>
-</select>
-<br><br><br>
 
-<a href="/show" class="btn-square">検索</a>
-<% end %>
+
+
+
 
 
    
