@@ -45,11 +45,8 @@ end
     res = Net::HTTP.get_response(uri)
    res_data = JSON.parse(res.body)
    @results = res_data
+
   end
-
-
-
-
 
  # 200 Success
 def response_success(class_name, action_name)
