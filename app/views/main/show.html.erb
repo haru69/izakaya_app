@@ -10,7 +10,11 @@
 
 
 
-<p type= "results"><%=@res_data%></p>
+<%=@results.each do |rest| %>
+
+<%=rest%>
+<%end%>
+
 
 
 <a href="show" class="btn-square">同じ条件でもう一度検索</a>

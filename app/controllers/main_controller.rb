@@ -40,7 +40,9 @@ end
     query = data.to_query
   uri = URI.parse('http://webservice.recruit.co.jp/hotpepper/gourmet/v1/?' + query )
     res = Net::HTTP.get_response(uri)
-   @res_data = JSON.parse(res.body)
+   hash = JSON.parse(res.body,symbolize_names: true)
+
+@results = hash
    
     end
 
