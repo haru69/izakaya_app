@@ -42,7 +42,7 @@ end
     res = Net::HTTP.get_response(uri)
    hash = JSON.parse(res.body,symbolize_names: true)
 
-@results = hash[:results]
+@results = hash[:results][:shop]
 
    
     end
