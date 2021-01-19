@@ -1,10 +1,21 @@
 <h1>ここの居酒屋にいこう！</h1>
 
 <body>
-<% @results.each do |rest| %>
+<% @results.each do |result| %>
 
-<p><%=rest[:name]%>
-<%= image_tag "#{rest[:photo][:pc][:l]}",:width => '450',:height => '300'%>
+<p><%=result[:name]%></p>
+<br>
+<%=result[:open]%>
+<br>
+<%=result[:access]%>
+<br>
+<%=result[:address]%>
+<br>
+<%=result[:budget][:average]%>
+<br>
+<%= image_tag "#{result[:photo][:pc][:l]}",:width => '450',:height => '300'%>
+<br>
+お店のURLはこちら→<%=link_to"#{result[:urls][:pc]}"%>
 
 <%end%>
 

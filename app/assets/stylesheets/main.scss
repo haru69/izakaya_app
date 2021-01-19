@@ -6,12 +6,23 @@ h1{
   font-size:50px;
 }
 
+p {
+  color: #6594e0;/*文字色*/
+  /*線の種類（点線）2px 線色*/
+  border-bottom: dashed 1px #6594e0;
+}
+
 body{
   color:orange;
   background-color:rgb(252, 252, 252);
   font-size:20px;
     display: table;
+    width: 500%;
     margin: 0 auto;
+    max-width: 800px;
+    height: 10rem;
+    text-align: center;
+    vertical-align: middle;
   }
 
 .btn-square {
