@@ -1,9 +1,11 @@
 <h1>ここの居酒屋にいこう！</h1>
 
-<body>
-<% @results.each do |result| %>
 
+<% @results.each do |result| %>
+<br>
 <p><%=result[:name]%></p>
+
+<body>
 <br>
 <%=result[:open]%>
 <br>

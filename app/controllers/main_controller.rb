@@ -11,13 +11,8 @@ class MainController < ApplicationController
 
 def update
   session[:address] = params[:address]
-  session[:range] = params[:range]
   session[:smoking] = params[:smoking]
   session[:key] = "a53d2b44f8d80d6d"
-  #session[:lat] = params[:lat].to_f
- # session[:lng] = params[:lng].to_f
-  #session[:range] = params[:range].to_i
-  #session[:smoking] = params[:smoking].to_i
   session[:keyword] = "居酒屋"
   session[:format] = "json"
  
@@ -29,9 +24,6 @@ end
     data = {
       "key": session[:key],
       "address": session[:address],
-      #"lat": session[:lat],
-      #"lng": session[:lng],
-      "range": session[:range],
       "keyword": session[:keyword],
       "non_smoking": session[:smoking],
       "format": session[:format]
@@ -42,9 +34,13 @@ end
     res = Net::HTTP.get_response(uri)
    hash = JSON.parse(res.body,symbolize_names: true)
 
-@results = hash[:results][:shop]
-
+   @results = hash[:results][:shop]
    
+results = hash[:results][:shop]
+
+@array =  results.to_a.sample
+
+
     end
 
  # 200 Success

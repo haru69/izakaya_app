@@ -3,10 +3,13 @@ body {
   color: #333;
   margin: 33px; }
 
-body, p, ol, ul, td {
+body, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px; }
+  p{
+    font-size: 30px;
+  }
 
 pre {
   background-color: #eee;
