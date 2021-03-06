@@ -4,6 +4,7 @@ class MainController < ApplicationController
   require 'uri'
   require 'json'
 
+
   def index
 
 
@@ -36,9 +37,10 @@ end
 
    @results = hash[:results][:shop]
    
-results = hash[:results][:shop]
+   @result = hash[:results]
 
-@array =  results.to_a.sample
+
+
 
 
     end
