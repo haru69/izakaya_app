@@ -4,6 +4,7 @@ class MainController < ApplicationController
   require 'uri'
   require 'json'
 
+  
 
   def index
 
@@ -37,7 +38,7 @@ end
 
    @results = hash[:results][:shop]
    
-   @result = hash[:results]
+   @result = hash[:results][:shop].sort_by{rand}[0]
 
 
 
